@@ -1,0 +1,563 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  color: #17243b;
+  background: #f7f9fc;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #f7f9fc;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+
+/* Smooth interactions */
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #60a5fa;
+  outline-offset: 4px;
+}
+
+/* Subtle glow on primary actions */
+.bg-blue-700,
+.bg-blue-500 {
+  transition:
+    background-color 250ms ease,
+    box-shadow 300ms ease,
+    transform 300ms ease;
+}
+
+/* Smooth event image zoom */
+.event-card img {
+  will-change: transform;
+}
+
+/* Avoid forced animations for reduced-motion users */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+.admin-input {
+  display: block;
+  width: 100%;
+  border: 1px solid rgb(255 255 255 / 12%);
+  border-radius: 12px;
+  background: rgb(15 23 42);
+  color: white;
+  padding: 12px 14px;
+  outline: none;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.admin-input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgb(59 130 246 / 20%);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Admin dashboard form styling */
+.admin-input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 12px;
+  background-color: #0f172a;
+  color: #f8fafc;
+  font-size: 14px;
+  line-height: 1.5;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.admin-input::placeholder {
+  color: #94a3b8;
+}
+
+.admin-input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.admin-input:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+textarea.admin-input {
+  min-height: 100px;
+  resize: vertical;
+}
+
+input.admin-input[type="datetime-local"] {
+  color-scheme: dark;
+}
+
+input.admin-input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+@media (max-width: 640px) {
+  .admin-input {
+    font-size: 16px;
+  }
+}
+
+/* ===== PREMIUM EVENT WEBSITE ANIMATIONS ===== */
+
+:root {
+  --motion-fast: 220ms;
+  --motion-smooth: 500ms;
+  --motion-spring: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Swap the colors of "people" and "next event" */
+
+
+/* Alternating hero heading colors */
+
+.hero-color-people {
+  animation: peopleColorSwap 2s step-end infinite;
+}
+
+.hero-color-event {
+  animation: eventColorSwap 2s step-end infinite;
+}
+
+@keyframes peopleColorSwap {
+  0%, 49.99% {
+    color: #60a5fa;
+  }
+  50%, 100% {
+    color: #c084fc;
+  }
+}
+
+@keyframes eventColorSwap {
+  0%, 49.99% {
+    color: #c084fc;
+  }
+  50%, 100% {
+    color: #60a5fa;
+  }
+}
+
+
+
+/* Event photography */
+.event-photo-motion {
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.event-photo-motion img {
+  transition:
+    transform 900ms var(--motion-spring),
+    filter 700ms ease;
+  will-change: transform;
+}
+
+.event-photo-motion:hover img {
+  transform: scale(1.065);
+  filter: saturate(1.15) brightness(1.04);
+}
+
+/* Smooth event details and checkout entrances */
+.checkout-screen,
+.booking-success {
+  animation: pageEnter 650ms var(--motion-spring) both;
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ticket selection cards */
+.ticket-option {
+  position: relative;
+  overflow: hidden;
+  transform: translateZ(0);
+  transition:
+    transform 350ms var(--motion-spring),
+    box-shadow 350ms ease,
+    border-color 250ms ease,
+    background-color 250ms ease;
+}
+
+.ticket-option:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 32px rgb(37 99 235 / 12%);
+}
+
+.ticket-option:active {
+  transform: scale(0.985);
+}
+
+.ticket-option-selected {
+  border-color: #2563eb !important;
+  box-shadow:
+    0 0 0 2px rgb(37 99 235 / 12%),
+    0 14px 35px rgb(37 99 235 / 14%);
+}
+
+/* Checkout form fields */
+.checkout-screen input,
+.checkout-screen select,
+.checkout-screen textarea {
+  transition:
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    background-color 220ms ease;
+}
+
+.checkout-screen input:focus,
+.checkout-screen select:focus,
+.checkout-screen textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 4px rgb(59 130 246 / 13%);
+}
+
+/* Buttons feel responsive */
+.checkout-screen button,
+.checkout-screen a,
+.ticket-option {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.checkout-screen button:not(:disabled) {
+  transition:
+    transform 220ms var(--motion-spring),
+    box-shadow 220ms ease,
+    background-color 220ms ease;
+}
+
+.checkout-screen button:not(:disabled):hover {
+  box-shadow: 0 8px 22px rgb(37 99 235 / 18%);
+}
+
+.checkout-screen button:not(:disabled):active {
+  transform: scale(0.98);
+}
+
+/* Booking success */
+.booking-success .success-icon {
+  animation: successPop 650ms var(--motion-spring) both;
+}
+
+@keyframes successPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.35) rotate(-15deg);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.12) rotate(4deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+/* Booking errors */
+.booking-error {
+  animation: errorShake 420ms ease both;
+  border: 1px solid rgb(239 68 68 / 30%);
+}
+
+@keyframes errorShake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-5px); }
+  40%, 80% { transform: translateX(5px); }
+}
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  
+  .checkout-screen,
+  .booking-success .success-icon,
+  .booking-error {
+    animation: none !important;
+  }
+
+  .event-photo-motion img,
+  .ticket-option {
+    transition: none !important;
+  }
+
+  .event-photo-motion:hover img,
+  .ticket-option:hover {
+    transform: none;
+  }
+}
+
+/* ===== PREMIUM EVENTS SECTION ===== */
+
+.events-premium {
+  background:
+    radial-gradient(
+      ellipse at 5% 10%,
+      rgb(96 165 250 / 30%),
+      transparent 35%
+    ),
+    radial-gradient(
+      ellipse at 95% 45%,
+      rgb(192 132 252 / 28%),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #dce5ff 0%,
+      #e8ddff 48%,
+      #c9dcff 100%
+    );
+}
+
+/* Keep event content above the background */
+.events-premium > div {
+  position: relative;
+  z-index: 1;
+}
+
+/* Premium event cards */
+.events-premium .event-card,
+.events-premium .grid > div {
+  border: 1px solid rgb(255 255 255 / 75%);
+  border-radius: 24px;
+  box-shadow:
+    0 8px 24px rgb(43 60 120 / 8%),
+    0 2px 6px rgb(43 60 120 / 5%);
+  transition:
+    transform 350ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 350ms ease,
+    border-color 350ms ease;
+}
+
+.events-premium .event-card:hover,
+.events-premium .grid > div:hover {
+  transform: translateY(-7px);
+  border-color: rgb(99 102 241 / 45%);
+  box-shadow:
+    0 20px 45px rgb(67 56 202 / 16%),
+    0 0 0 1px rgb(129 140 248 / 12%);
+}
+
+/* Smooth image zoom */
+.events-premium .event-card img,
+.events-premium .grid > div img {
+  transition: transform 650ms ease;
+}
+
+.events-premium .event-card:hover img,
+.events-premium .grid > div:hover img {
+  transform: scale(1.045);
+}
+
+/* Search field */
+.events-premium input[type="search"] {
+  box-shadow: 0 6px 20px rgb(55 65 120 / 6%);
+  transition:
+    box-shadow 250ms ease,
+    border-color 250ms ease,
+    transform 250ms ease;
+}
+
+.events-premium input[type="search"]:focus {
+  box-shadow: 0 0 0 4px rgb(99 102 241 / 16%);
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .events-premium .event-card,
+  .events-premium .grid > div,
+  .events-premium img {
+    transition: none !important;
+  }
+
+  .events-premium .event-card:hover,
+  .events-premium .grid > div:hover,
+  .events-premium .event-card:hover img,
+  .events-premium .grid > div:hover img {
+    transform: none;
+  }
+}
+
+/* Animated hero event photo deck */
+
+/* Dynamic, premium event photo deck */
+.hero-deck {
+  perspective: 1200px;
+  isolation: isolate;
+}
+
+.hero-deck-card {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  padding: 9px;
+  border: 1px solid rgb(147 197 253 / 50%);
+  border-radius: 2rem;
+  background: linear-gradient(135deg, #263e70, #111c3a);
+  box-shadow: 0 24px 55px rgb(0 0 0 / 30%);
+  transform-origin: center center;
+  backface-visibility: hidden;
+  animation: heroDeckMove 1.5s ease-in-out both;
+  will-change: transform, opacity;
+}
+
+.hero-deck-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: filter 400ms ease;
+}
+
+.hero-deck-card-0 {
+  z-index: 3;
+  animation-delay: 0s;
+}
+
+.hero-deck-card-1 {
+  z-index: 2;
+  animation-delay: 0.08s;
+}
+
+.hero-deck-card-2 {
+  z-index: 1;
+  animation-delay: 0.16s;
+}
+
+@keyframes heroDeckMove {
+  0% {
+    opacity: 0;
+    transform: translate(45px, 12px) rotate(8deg) scale(0.91);
+  }
+  18% {
+    opacity: 1;
+  }
+  35% {
+    transform: translate(15px, -5px) rotate(4deg) scale(0.96);
+  }
+  65% {
+    transform: translate(-12px, 3px) rotate(-3deg) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-deck-card {
+    animation: none;
+  }
+
+  .hero-deck-card-0 {
+    transform: rotate(0deg);
+  }
+
+  .hero-deck-card-1 {
+    transform: translate(12px, 0) rotate(5deg);
+  }
+
+  .hero-deck-card-2 {
+    transform: translate(-12px, 0) rotate(-5deg);
+  }
+}
+
+
+@keyframes deckShuffle {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translate(20px, -8px) rotate(5deg) scale(0.96);
+  }
+  50% {
+    transform: translate(0, 0) rotate(0deg) scale(0.92);
+  }
+  75% {
+    transform: translate(-20px, -5px) rotate(-5deg) scale(0.96);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-deck-card {
+    animation: none;
+  }
+
+  .hero-deck-card-0 {
+    transform: rotate(0deg);
+  }
+
+  .hero-deck-card-1 {
+    transform: translate(10px, 0) rotate(5deg);
+  }
+
+  .hero-deck-card-2 {
+    transform: translate(-10px, 0) rotate(-5deg);
+  }
+}
