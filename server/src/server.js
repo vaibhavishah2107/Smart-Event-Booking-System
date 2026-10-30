@@ -9,14 +9,13 @@ app.get("/api/test-route", (req, res) => {
   res.json({ message: "Correct backend is running" });
 });
 
-app.use(
-  cors({
-    origin: [
-      "http://localhost:5173",
-      "http://localhost:5174",
-    ],
-  })
-);
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "http://localhost:5174",
+    "https://smart-event-booking-system-murex.vercel.app",
+  ],
+}));
 
 app.use(express.json());
 
